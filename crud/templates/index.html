@@ -36,10 +36,11 @@
               Idade
             </div>
             <div class="col-2">
-              Editar
+
+              Editar 
             </div>
             <div class="col-2">
-              Apagar
+              Apagar 
             </div>
         </div>
         {% for pessoa in pessoas %}
@@ -54,10 +55,16 @@
             {{pessoa.idade}}
           </div>
           <div class="col-2">
-            <button type="button" class="btn btn-warning">EDITAR</button>
+            <a href = "{% url 'editar' pessoa.id %}">
+              {% load static %}
+              <img src="{% static '../static/edit.png' %}" width="20px" height="20px">
+            </a>
           </div>
           <div class="col-2">
-            <a href = "{% url 'delete' pessoa.id %}"><button type="button" class="btn btn-danger">APAGAR</button></a>
+                <a href = "{% url 'delete' pessoa.id %}">
+                  {% load static %} 
+                  <img src="{% static '../static/trash.png' %}" width="20px" height="20px">
+                </a>
           </div>
         </div>
         {% endfor %}

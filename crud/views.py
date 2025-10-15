@@ -21,6 +21,20 @@ def delete(request, id):
     pessoa.delete()
     return redirect(home)
 
+def editar(request, id):
+    pessoas = Pessoa.objects.get(id = id)
+    return render(request,"update.html",{"pessoa":Pessoa})
+
+def update(request, id):
+    vnome = request.POST.get("nome")
+    vidade = request.POST.get("idade")
+    pessoa = Pessoa.objects.get(id = id)
+    pessoa.nome = vnome
+    pessoa.idade = vidade
+    pessoa.save()
+    return redirect(home)
+
+
 
 
 
